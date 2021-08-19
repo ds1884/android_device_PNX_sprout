@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!-- These resources are around just to allow their values to be customized
+     for different hardware and product builds.  Do not translate. -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- All the capabilities of the LEDs on this device, stored as a bit field.
+         This integer should equal the sum of the corresponding value for each
+         of the following capabilities present:
+         // Device has a color adjustable battery light.
+         LIGHTS_RGB_NOTIFICATION_LED = 1
+         // Device has a color adjustable notification light.
+         LIGHTS_RGB_BATTERY_LED = 2
+         LIGHTS_MULTIPLE_NOTIFICATION_LED = 4 (deprecated)
+         // The notification light has adjustable pulsing capability.
+         LIGHTS_PULSATING_LED = 8
+         // Device has a multi-segment battery light that is able to
+         // use the light brightness value to determine how many
+         // segments to show (in order to represent battery level).
+         LIGHTS_SEGMENTED_BATTERY_LED = 16
+         // The notification light supports HAL adjustable brightness
+         // via the alpha channel.
+         // Note: if a device notification light supports LIGHTS_RGB_NOTIFICATION_LED
+         // then HAL support is not necessary for brightness control.  In this case,
+         // brightness support will be provided by mokee-sdk through the scaling of
+         // RGB color values.
+         LIGHTS_ADJUSTABLE_NOTIFICATION_LED_BRIGHTNESS = 32
+         // Device has a battery light.
+         LIGHTS_BATTERY_LED = 64
+         // The battery light supports HAL adjustable brightness via
+         // the alpha channel.
+         // Note: if a device battery light supports LIGHTS_RGB_BATTERY_LED then HAL
+         // support is not necessary for brightness control.  In this case,
+         // brightness support will be provided by mokee-sdk through the scaling of
+         // RGB color values.
+         LIGHTS_ADJUSTABLE_BATTERY_LED_BRIGHTNESS = 128
+         For example, a device with notification and battery lights that supports
+         pulsating and RGB control would set this config to 75. -->
+    <integer name="config_deviceLightCapabilities">0</integer>
+
+    <!-- Whether notify fingerprint client of successful cancelled authentication -->
+    <bool name="config_notifyClientOnFingerprintCancelSuccess">true</bool>
+
+    <!-- Whether to post reset runnable for all clients -->
+    <bool name="config_fingerprintPostResetRunnableForAllClients">true</bool>
+
+    <!-- The list of vendor package signatures that should also be considered
+         platform signatures, specifically for use on devices with a vendor partition. -->
+    <string-array name="config_vendorPlatformSignatures" translatable="false">
+        <item>308203a130820289a003020102020900fd75c4ed227212a2300d06092a864886f70d01010b05003067310b30090603550406130246493111300f06035504080c0848656c73696e6b693111300f06035504070c0848656c73696e6b69310c300a060355040a0c03484d443110300e060355040b0c07416e64726f69643112301006035504030c094e6f6b69615f504e58301e170d3138303731363030343233315a170d3435313230313030343233315a3067310b30090603550406130246493111300f06035504080c0848656c73696e6b693111300f06035504070c0848656c73696e6b69310c300a060355040a0c03484d443110300e060355040b0c07416e64726f69643112301006035504030c094e6f6b69615f504e5830820122300d06092a864886f70d01010105000382010f003082010a0282010100a594814f1c1207f277945d00cfb5fecc01a1ad62fcd1414f35af10afca6f3437abbc31d3014e1616f8652d80e3d51d39fb3b4b757061ac7dabcd0f2d5a91a8ded17e9dcced7903b00760a04ed2c1829683ee2c17e6e373d5d26ff473c27194011f6d25d31756004b9b4d10b36041d8093e676c96cbe1bbfbcaa05e018bc898a5bc2534eb9f6e4cf827ecd64f61f658675bf07175d2b0139281b4cee44816cc1bb9583b2e029de1384885576ddbf0eef7569eb2264f1b6562a14cc88f76a39e4888a798a731cb165008e0f9fdfdb94a57d908b27111c8cd7d2a344a22e08959dd3ad932ee2947429163443f69ff6350306e6111ac3acfee394a92a59e782b8cc50203010001a350304e301d0603551d0e04160414642b3f19aea410741fbd6db36e3ac017572da0c4301f0603551d23041830168014642b3f19aea410741fbd6db36e3ac017572da0c4300c0603551d13040530030101ff300d06092a864886f70d01010b05000382010100715680132857fd7054aed57be908122f28037ea83e05e16caee8f1fd2d7d4d897c8bebaadf38d2c736f39124b6d74f95df1dbff90cb238ceb2770492c291430bdda737ca4f5df53395c464830ac6946c8d7ec66877d6f1cb0977daa48a153ba8e432c7d6ac47941fcd103ee33497d46377186ea2305cdf7fcf528e0fc1329f8e2350bd5bca04f05812ada805496f2f17d7d72249d4e935d44b448b761e23b0e69ce30c0fb018c7e554fd91b58d2e0fa0dbbbfd54ce46b80d8f70bc9fbd193ddca1d3b52d7542b37f1493476e7acd0f877b4d7a34254eb31e7c689f2d79219fde890f6d8ac9de86cb4835311dd1b1df10786469a17a8e64d079074a2d3508c79e</item>
+    </string-array>
+
+    <!-- Default value for proximity check on screen wake
+     NOTE ! - Enable for devices that have a fast response proximity sensor (ideally < 300ms)-->
+    <bool name="config_proximityCheckOnWake">true</bool>
+    <integer name="config_proximityCheckTimeout">100</integer>
+    <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
+
+    <!-- Whether device has screen with higher aspect ratio -->
+    <bool name="config_haveHigherAspectRatioScreen">true</bool>
+
+    <!-- Whether device ignores the RSSNR signal implementation -->
+    <bool name="config_ignoreRssnrSignalLevel">true</bool>
+
+    <!-- Whether device needs to wait for Qualcomm MPCTL service to start
+         before setting power profiles on boot. -->
+    <bool name="config_waitForMpctlOnBoot">true</bool>
+
+    <!-- Whether device has a physical display cutout -->
+    <bool name="config_physicalDisplayCutout">true</bool>
+
+    <!-- Whether device supports sensor based doze customizations -->
+    <bool name="config_dozePulsePickup">true</bool>
+    <bool name="config_dozePulseTilt">true</bool>
+
+    <!-- Power Management: Specifies whether to decouple the auto-suspend state of the
+         device from the display on/off state.
+         When false, autosuspend_disable() will be called before the display is turned on
+         and autosuspend_enable() will be called after the display is turned off.
+         This mode provides best compatibility for devices using legacy power management
+         features such as early suspend / late resume.
+         When true, autosuspend_display() and autosuspend_enable() will be called
+         independently of whether the display is being turned on or off.  This mode
+         enables the power manager to suspend the application processor while the
+         display is on.
+         This resource should be set to "true" when a doze component has been specified
+         to maximize power savings but not all devices support it.
+         Refer to autosuspend.h for details.
+    -->
+    <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">true</bool>
+
+    <!-- Smart charging -->
+    <string name="config_SmartChargingSysfsNode" translatable="false">/sys/class/power_supply/battery/input_suspend</string>
+    <string name="config_SmartChargingSuspendValue" translatable="false">1</string>
+    <string name="config_SmartChargingResumeValue" translatable="false">0</string>
+
+</resources>

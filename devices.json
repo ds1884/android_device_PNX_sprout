@@ -1,0 +1,14 @@
+   {
+      "brand": "Nokia",
+      "codename": "PNX_sprout",
+      "name": "Nokia 8.1",
+      "supported_versions": [
+         {
+            "maintainer_name": "Dhruv Singh",
+            "maintainer_url": "https://forum.xda-developers.com/m/ds1884.7707101/",
+            "version_code": "eleven",
+            "version_name": "Eleven",
+            "xda_thread": "https://forum.xda-developers.com/t/rom-unofficial-pnx_sprout-11-evolutionx-4-9.4320077/"
+         }
+      ]
+   }

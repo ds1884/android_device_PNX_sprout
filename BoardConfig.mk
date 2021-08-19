@@ -1,0 +1,179 @@
+#
+# Copyright (C) 2018-2020 The lineageOS Project
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+BOARD_VENDOR := nokia
+DEVICE_PATH := device/nokia/PNX_sprout
+
+# Architecture
+TARGET_ARCH := arm64
+TARGET_ARCH_VARIANT := armv8-2a
+TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_ABI2 :=
+TARGET_CPU_VARIANT := generic
+TARGET_CPU_VARIANT_RUNTIME := cortex-a75
+
+TARGET_2ND_ARCH := arm
+TARGET_2ND_ARCH_VARIANT := armv8-2a
+TARGET_2ND_CPU_ABI := armeabi-v7a
+TARGET_2ND_CPU_ABI2 := armeabi
+TARGET_2ND_CPU_VARIANT := generic
+TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a75
+
+TARGET_USES_64_BIT_BINDER := true
+
+# Build 
+BUILD_BROKEN_DUP_RULES := true
+ALLOW_MISSING_DEPENDENCIES=true
+
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := sdm710
+TARGET_NO_BOOTLOADER := true
+
+# Platform
+TARGET_BOARD_PLATFORM := sdm710
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno616
+
+# A/B
+AB_OTA_UPDATER := true
+
+AB_OTA_PARTITIONS += \
+    boot \
+    system \
+    vendor
+
+# Assert
+TARGET_OTA_ASSERT_DEVICE := PNX_sprout
+
+# APEX
+DEXPREOPT_GENERATE_APEX_IMAGE := true
+
+# Audio
+TARGET_USES_lineage_FOR_AUDIO := true
+AUDIO_FEATURE_ENABLED_AAC_ADTS_OFFLOAD := true
+AUDIO_FEATURE_ENABLED_AUDIOSPHERE := true
+AUDIO_FEATURE_ENABLED_EXTN_FORMATS := true
+AUDIO_FEATURE_ENABLED_HDMI_SPK := true
+AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
+BOARD_USES_ALSA_AUDIO := true
+USE_XML_AUDIO_POLICY_CONF := 1
+
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth/include
+BOARD_HAVE_BLUETOOTH_QCOM := true
+TARGET_USE_QTI_BT_STACK := true
+TARGET_FWK_SUPPORTS_FULL_VALUEADDS := true
+
+# Camera
+TARGET_USES_QTI_CAMERA_DEVICE := true
+
+# Charger Mode
+BOARD_CHARGER_ENABLE_SUSPEND := true
+
+# Dex
+ifeq ($(HOST_OS),linux)
+  ifneq ($(TARGET_BUILD_VARIANT),eng)
+    WITH_DEXPREOPT ?= true
+  endif
+endif
+WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY ?= true
+
+# Display
+TARGET_SCREEN_DENSITY := 420
+
+# DRM
+TARGET_ENABLE_MEDIADRM_64 := true
+
+# GPS
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
+USE_DEVICE_SPECIFIC_GPS := true
+
+# Graphics
+TARGET_USES_ION := true
+
+# HIDL
+DEVICE_FRAMEWORK_MANIFEST_FILE := \
+    $(DEVICE_PATH)/framework_manifest.xml
+
+# Kernel
+BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0xA90000 androidboot.hardware=qcom androidboot.console=ttyMSM0 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 service_locator.enable=1 androidboot.configfs=true androidboot.usbcontroller=a600000.dwc3 swiotlb=1 loop.max_part=7
+BOARD_KERNEL_BASE   := 0x00000000
+BOARD_KERNEL_OFFSET := 0x00008000
+BOARD_KERNEL_PAGESIZE    := 4096
+BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_RAMDISK_OFFSET     := 0x01000000
+BOARD_SECOND_OFFSET := 0x00f00000
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+BOARD_BOOTIMG_HEADER_VERSION := 1
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz-dtb
+# Partition (Boot)
+BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
+BOARD_FLASH_BLOCK_SIZE := 262144 #(BOARD_KERNEL_PAGESIZE * 64)
+
+# Partition (System)
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+
+# Partition (Userdata)
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 52739161600
+BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
+
+# Partition (Userimages)
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USES_MKE2FS := true
+
+TARGET_COPY_OUT_PRODUCT := system/product
+TARGET_COPY_OUT_VENDOR := vendor
+
+# Power
+TARGET_POWERHAL_MODE_EXT := $(DEVICE_PATH)/power/power-mode.cpp
+
+# Properties
+TARGET_ODM_PROP += $(DEVICE_PATH)/odm.prop
+TARGET_PRODUCT_PROP += $(DEVICE_PATH)/product.prop
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+
+# QCOM
+BOARD_USES_QCOM_HARDWARE := true
+
+# Recovery
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+BOARD_USES_RECOVERY_AS_BOOT := true
+TARGET_NO_RECOVERY := true
+TARGET_RECOVERY_DEVICE_DIRS := $(DEVICE_PATH)
+TARGET_RECOVERY_FSTAB := device/nokia/PNX_sprout/rootdir/etc/fstab.qcom
+
+# RenderScript
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+
+# RIL
+ENABLE_VENDOR_RIL_SERVICE := true
+
+# Sepolicy
+include device/qcom/sepolicy/SEPolicy.mk
+
+# WiFi
+BOARD_WLAN_DEVICE := qcwcn
+BOARD_HOSTAPD_DRIVER := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+WIFI_DRIVER_DEFAULT := qca_cld3
+WIFI_DRIVER_STATE_CTRL_PARAM := "/dev/wlan"
+WIFI_DRIVER_STATE_OFF := "OFF"
+WIFI_DRIVER_STATE_ON := "ON"
+WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
+WPA_SUPPLICANT_VERSION := VER_0_8_X
+
+# Prebuilts
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz-dtb
+BOARD_PREBUILT_VENDORIMAGE := vendor/nokia/PNX_sprout/proprietary/vendor.img
+
+# Inherit from the proprietary stuffs
+-include vendor/nokia/PNX_sprout/BoardConfigVendor.mk
