@@ -21,5 +21,6 @@ Nokia 8.1 was announced and released in Nov 2018.
 
 How to build
 
-. build/envsetup.sh && lunch lineage_PNX_sprout-eng && make recoveryimage
+. build/envsetup.sh && lunch lineage_PNX_sprout-userdebug
+brunch lineage_PNX_sprout-userdebug
 
