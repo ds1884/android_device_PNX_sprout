@@ -1,4 +1,4 @@
-# android_device_PNX_sprout
+# Nokia 8.1
 Stable Device tree for Nokia 8.1 to use with Pre-built kernel and vendor
  
   Nokia 8.1 (codenamed _"PNX_sprout"_) is a high-end smartphone from Nokia.
