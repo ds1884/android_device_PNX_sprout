@@ -1,7 +1,7 @@
 # Nokia 8.1
 Stable Device tree for Nokia 8.1 to use with Pre-built kernel and vendor
  
-  Nokia 8.1 (codenamed _"PNX_sprout"_) is a high-end smartphone from Nokia.
+  Nokia 8.1 (codenamed _"PNX_sprout"_ or _"Phoenix"_ or _"phoenix_sprout"_) is a high-end smartphone from Nokia.
 
 Nokia 8.1 was announced and released in Nov 2018.
 
